@@ -1,3 +1,0 @@
-##o: کیا آپ اردو بولتے ہے  
-##t: Do you (typically) speak Urdu?
-{"name":"root","children":[{"name":"ہے","def":"do/is","pos":"verb","id":5,"children":[{"name":"بولتے","def":"speak","pos":"verb","id":4,"children":[{"name":"اردو","def":"Urdu","pos":"noun","id":3,"link":"indirect object"}],"link":"verb pair"},{"name":"آپ","def":"you","pos":"pron","id":2,"link":"subject"},{"name":"کیا","def":"what","pos":"det","id":1,"link":"question"}]}],"id":6}

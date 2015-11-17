@@ -1,3 +1,0 @@
-##o: کیا آپ اردو بولتے ہے  
-##t: Do you (typically) speak Urdu?
-{"name":"root", "children": [{"name": "ہے", "def": "do/is", "pos": "verb"}, {"name": "بولتے", "def": "speak", "pos":"verb"}, {"name": "اردو", "def": "Urdu", "pos": "noun"}, {"name": "آپ", "def": "you", "pos": "pron"}, {"name": "کیا", "def": "what", "pos": "det"}]}
