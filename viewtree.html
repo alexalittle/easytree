@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+EasyTree
+(c) 2015, Alexa Little
+
+License: MIT BSD-3
+(see ./licenses/EasyTree BSD-3/ for details)
+
+THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE U.S. GOVERNMENT OR ANY DEPARTMENTS OR EMPLOYEES THEREOF BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.)
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <title>Easy Tree</title>
+    </head>
+
+<body class="viewtree">
+      
+    <div class="navbar">
+        <h2><a href="index.html" id="logo" onClick="saveTree()">Easy Tree</a></h2>
+        <nav>
+            <div class="navlinks">
+                <a href="viewtree.html" onClick="saveTree()">VIEW TREE</a>
+                <a href="about.html" onClick="saveTree()">ABOUT</a>
+                <a href="help.html" onClick="saveTree()">HELP</a>
+                <a href="http://www.arl.army.mil" onClick="saveTree()">ARL</a>
+            </div>
+        </nav>
+    </div>
+      
+    <div id="fullmenu">
+        
+        <div class="toolbar">
+            <input type="button" value="upload" onClick="$('#upload').toggle(); $('#upload2').toggle()" />
+            <input type="button" value="clear" onClick="clearTree()" />
+            <input type="button" value="save as text" onClick="textTree(); $('#jsontext').toggle()"/>
+            <input type="button" value="download" onClick="$('#download').toggle()"/>
+            <input type="button" value="settings" onClick="$('#settings').toggle()"/>
+            <input type="button" value="key" onClick="showKey()"/>
+            <input type="button" value="reset" onClick="massReset()" />
+            <!-- future 'add node' button <input type="button" value="+" onClick="addNode()" /> -->
+        </div>
+        
+        <section id="upload">
+            <form id="upload">
+                <p>Enter the tree in JSON format:</p>
+                <textarea id="treedata" rows="5"></textarea>
+            </form>
+            <input type="button" id="treebtn" value="Show my tree!" onClick="setJSONtreeData()" />
+        </section>
+        
+        <section id="upload2">
+            <form id="upload2">
+                <p>Or, enter a phrase here:</p>
+                <textarea id="treedata2" rows="5"></textarea>
+            </form>
+            <input type="button" id="treebtn2" value="Show my tree!" onClick="setphrasetreeData()" />
+        </section>
+      
+        <section id="jsontext">
+            <div id="jsontext">
+                <p>Your tree in JSON format:</p>
+                <textarea id="jsonfield" rows="5"></textarea>
+            </div>
+            <input type="button" id="closebtn" value="Close" onClick="$('#jsontext').hide()" />
+        </section>
+        
+        <section id="download">
+            <form id="download">
+                <p>Please select a filename:</p>
+                <input type="text" id="filename" value="mytree.json"/>
+            </form>
+            <input type="button" id="dwnbtn" value="Download" onClick="downloadTree()"/>
+            <button onClick="$('#download').toggle()">Close</button>
+        </section>
+        
+        <section id="pos">
+            <table class="keytable">
+                <tr>
+                    <td><div class="one swatch"></div></td>
+                    <td id='20'></td>
+                    <td><div class="six swatch"></div></td>
+                    <td id='70'></td>
+                </tr>
+                <tr>
+                    <td><div class="two swatch"></div></td>
+                    <td id='30'></td>
+                    <td><div class="seven swatch"></div></td>
+                    <td id='80'></td>
+                </tr>
+                <tr>
+                    <td><div class="three swatch"></div></td>
+                    <td id='40'></td>
+                    <td><div class="eight swatch"></div></td>
+                    <td id='90'></td>
+                </tr>
+                <tr>
+                    <td><div class="four swatch"></div></td>
+                    <td id='50'></td>
+                    <td><div class="nine swatch"></div></td>
+                    <td id='100'></td>
+                </tr>
+                <tr>
+                    <td><div class="five swatch"></div></td>
+                    <td id='60'></td>
+                    <td><div class="ten swatch"></div></td>
+                    <td id='110'></td>
+                </tr>
+            </table>
+            <button id="resetpos" onClick="resetPOS()">Reset</button>
+            <button id="customize" onClick="displayCustomizer()">Customize</button>
+            <button onClick='$("#pos").toggle()'>Close</button>
+        </section>
+        
+        <section id="custompos">
+            <form id="posform">
+            <table class="postable">
+                <tr>
+                    <td><div class="one swatch"></div></td>
+                    <td><input type="text" name="one" form="posform" id='1' value='adj'></td>
+                    <td><div class="six swatch"></div></td>
+                    <td><input type="text" name="six" form="posform" id='6' value='verb'></td>
+                </tr>
+                <tr>
+                    <td><div class="two swatch"></div></td>
+                    <td><input type="text" name="two" form="posform" id='2' value='adv'></td>
+                    <td><div class="seven swatch"></div></td>
+                    <td><input type="text" name="seven" form="posform" id='7' value='det'></td>
+                </tr>
+                <tr>
+                    <td><div class="three swatch"></div></td>
+                    <td><input type="text" name="three" form="posform" id='3' value='adp'></td>
+                    <td><div class="eight swatch"></div></td>
+                    <td><input type="text" name="eight" form="posform" id='8' value='pron'></td>
+                </tr>
+                <tr>
+                    <td><div class="four swatch"></div></td>
+                    <td><input type="text" name="four" form="posform" id='4' value='noun'></td>
+                    <td><div class="nine swatch"></div></td>
+                    <td><input type="text" name="nine" form="posform" id='9' value='conj'></td>
+                </tr>
+                <tr>
+                    <td><div class="five swatch"></div></td>
+                    <td><input type="text" name="five" form="posform" id='5' value='aux'></td>
+                    <td><div class="ten swatch"></div></td>
+                    <td><input type="text" name="ten" form="posform" id='10' value='x'></td>
+                </tr>
+            </table>
+            </form>
+            <input type="button" id="getpos" value="Submit" onClick="getCustomPos()" />
+        </section>
+        
+        <section id="settings">
+            <p>Settings</p>
+            <table>
+                <tr>
+                    <td>Tree Width</td>
+                    <td><input type="button" class="setbtn" value="−" onClick="narrowTree()"/></td>
+                    <td><input type="button" class="setbtn" value="+" onClick="widerTree()"/></td>
+                </tr>
+                <tr>
+                    <td>Tree Height</td>
+                    <td><input type="button" class="setbtn" value="−" onClick="shorterTree()"/></td>
+                    <td><input type="button" class="setbtn" value="+" onClick="tallerTree()"/></td>
+                </tr>
+                <tr>
+                    <td>Node Size</td>
+                    <td><input type="button" class="setbtn" value='−' onClick='smallerNode()'/></td>
+                    <td><input type='button' class="setbtn" value='+' onClick='biggerNode()'/></td>
+                </tr>
+                <tr>
+                    <td>Text X-Values</td>
+                    <td><input type="button" class="setbtn" value="−" onClick="smallerX()" /></td>
+                    <td><input type="button" class="setbtn" value="+" onClick="biggerX()" /></td>
+                </tr>
+                <tr>
+                    <td>Text Y-Values</td>
+                    <td><input type="button" class="setbtn" value="−" onClick="smallerY()" /></td>
+                    <td><input type="button" class="setbtn" value="+" onClick="biggerY()" /></td>
+                </tr>
+            </table>
+            <table>
+                <tr><td>Font Family</td>
+                    <td>
+                        <select id="fonts">
+                            <option value="serif">Serif</option>
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="monospace">Monospace</option>
+                            <option value="standard">Standard</option>
+                        </select>
+                    </td>
+                    <td><button onClick="customFont()">Go</button></td>
+                </tr>
+            </table>
+            <input type="button" id="reset" value="Reset" onClick="reset()"/>
+            <input type="button" id="settingbtn" value="Close" onClick="$('#settings').hide()" />
+        </section>
+        
+        <section id='labels'>
+            <p class='labelsp'>Choose from frequent labels:</p>
+            <div>
+                <input type='button' id='button0' value='One' onClick="freqLabel(this.value)"/>
+                <input type='button' id='button1' value='Two' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button2' value='Three' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button3' value='Four' onClick="freqLabel(this.value)"/>
+                <input type='button' id='button4' value='Five' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button5' value='Six' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button6' value='Seven' onClick="freqLabel(this.value)"/>
+                <input type='button' id='button7' value='Eight' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button8' value='Nine' onClick='freqLabel(this.value)'/>
+                <input type='button' id='button9' value='Ten' onClick='freqLabel(this.value)'/>
+            </div>
+            <p class='labelsp'>Or, add a new label:</p>
+            <input type='text' id="textLabel"/>
+            <button onClick="newLabel()">Go</button>
+            <button onClick="finishLabel()">Cancel</button>
+            <button onClick="resetLabels()">Reset</button>
+        </section>
+        
+    </div>
+    
+    <div id="sents" class="standard">
+    </div>
+      
+    <script src="scripts/jquery-1.11.3.min.js"></script>
+    <script src="scripts/d3.v3.min.js"></script>
+    <script src="scripts/blob.js"></script>
+    <script src="scripts/FileSaver.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
