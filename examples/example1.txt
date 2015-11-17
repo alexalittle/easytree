@@ -1,0 +1,3 @@
+##o: 花子 さん の 友達 は 東京 に 住んでいます
+##t: Miss Hanako's friend lives in Tokyo
+{"name": "root", "children": [{"name": "花子", "def": "Hanako", "pos": "noun"}, {"name": "さん", "def": "Miss", "pos": "x"}, {"name": "の", "def": "s", "pos":"det"}, {"name": "友達", "def": "friend", "pos":"noun"}, {"name": "は", "def": "は", "pos":"x"}, {"name": "東京", "def": "Tokyo", "pos":"noun"}, {"name": "に", "def": "in", "pos":"adp"}, {"name": "住んでいます", "def": "lives", "pos":"verb"}]}

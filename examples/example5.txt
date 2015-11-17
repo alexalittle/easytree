@@ -1,0 +1,3 @@
+##o: 花子 さん の 友達 は 東京 に 住んでいます
+##t: Miss Hanako's friend lives in Tokyo
+{"name":"root","children":[{"name":"住んでいます","def":"lives","pos":"verb","id":1,"children":[{"name":"友達","def":"friend","pos":"noun","id":5,"children":[{"name":"花子","def":"Hanako","pos":"noun","id":8,"children":[{"name":"さん","def":"Miss","pos":"x","id":7,"link":"title / honorific"},{"name":"の","def":"s","pos":"det","id":6,"link":"possessive"}],"link":"noun phrase"},{"name":"は","def":"は","pos":"x","id":4,"link":"topic marker"}],"link":"subject"},{"name":"東京","def":"Tokyo","pos":"noun","id":3,"children":[{"name":"に","def":"in","pos":"adp","id":2,"link":"preposition"}],"link":"location"}]}],"id":9}

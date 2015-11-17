@@ -1,0 +1,3 @@
+##o: One language is never enough	
+##t: Une seule langue n'est jamais suffisante
+{"name": "root", "children": [{"name": "One", "def": "Une seule", "pos": "det"}, {"name": "language", "def": "langue", "pos": "noun"}, {"name": "is", "def": "n'est", "pos": "verb"}, {"name": "never", "def": "jamais", "pos": "adv"}, {"name": "enough", "def": "suffisante", "pos": "adj"}]}
