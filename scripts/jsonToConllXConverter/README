@@ -1,0 +1,11 @@
+Scripts for converting between CoNLL-X and EasyTree JSON. Written in Java.
+
+Step 1: Compile
+javac -cp jackson-annotations-2.6.3.jar:jackson-core-2.6.3.jar:jackson-databind-2.6.3.jar *.java
+
+Step 2: Run
+Example commands:
+java -cp jackson-annotations-2.6.3.jar:jackson-core-2.6.3.jar:jackson-databind-2.6.3.jar:. ConllXToJSONConverter input.conllx.txt output.json.txt
+
+java -cp jackson-annotations-2.6.3.jar:jackson-core-2.6.3.jar:jackson-databind-2.6.3.jar:. JSONToConllXConverter input.json.txt output.conllx.txt
+
