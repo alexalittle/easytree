@@ -23,7 +23,7 @@ var selectedLink;
 var dependentNode;
 
 // define the palette for POS color-coding
-var poscolors = ["#FF7F00", "#FFFF32", "#B2FF8C", "#32FF00", "#A5EDFF", "#19B2FF", 
+var poscolors = ["#FF7F00", "#FFFF32", "#B2FF8C", "#32FF00", "#A5EDFF", "#19B2FF",
     "#CCBFFF", "#654CFF", "#FF99BF", "#E51932"];
 
 // settings variables are saved as session variables
@@ -32,14 +32,14 @@ var poscolors = ["#FF7F00", "#FFFF32", "#B2FF8C", "#32FF00", "#A5EDFF", "#19B2FF
 var standardPOS = function() {
     var poslist = {
         "1":'adj',
-        "2":'adv', 
-        "3":'adp', 
-        "4":'noun', 
-        "5":'aux', 
-        "6":'verb', 
-        "7":'det', 
-        "8":'pron', 
-        "9":'conj', 
+        "2":'adv',
+        "3":'adp',
+        "4":'noun',
+        "5":'aux',
+        "6":'verb',
+        "7":'det',
+        "8":'pron',
+        "9":'conj',
         "10":'x'
     };
     localStorage['posarray'] = JSON.stringify(poslist);
@@ -132,9 +132,14 @@ var setJSONtreeData = function() {
             showSents(sessionStorage.translation);
         }
         // else show original, if available
-        else {
+        else if (sents.length === 1) {
             sessionStorage.setItem("original", sents[0]);
+            sessionStorage.setItem("translation", "");
             showSents(sessionStorage.original);
+        }
+        else {
+            sessionStorage.setItem("original", "");
+            sessionStorage.setItem("translation", "");
         }
     };
     // remove sentences from tree data to isolate the JSON
@@ -144,9 +149,10 @@ var setJSONtreeData = function() {
     $('#upload2').hide();
     try {
         // try to store tree data and display tree
-        sessionStorage.setItem("treeData", treeData);
+        sessionStorage.setItem("treeData", treeData);  
         treeData = JSON.parse(treeData);
         getTree(treeData);
+        window.location.reload();
     } catch(e) {
         // alert user if error occurs
         alert("Sorry, something went wrong!");
@@ -154,7 +160,7 @@ var setJSONtreeData = function() {
 };
 
 var setphrasetreeData = function() {
-        var original = $("#treedata2").val();
+    var original = $("#treedata2").val();
     if (original !== "") {
         var phrase = original.split(" ");
         var treeData = new Object();
@@ -169,8 +175,10 @@ var setphrasetreeData = function() {
             // try to store tree data and display tree
             sessionStorage.setItem("treeData", JSON.stringify(treeData));
             sessionStorage.setItem("original", "##o: " + original);
+            sessionStorage.setItem("translation", "");
             showSents(original);
             getTree(treeData);
+            window.location.reload();
         } catch(e) {
             // alert user if error occurs
             alert("Sorry, something went wrong!");
@@ -216,6 +224,8 @@ var showSents = function (whatvar) {
 // reset the tree data (to an empty string) and reload the window
 var clearTree = function() {
     sessionStorage.removeItem("treeData");
+    sessionStorage.removeItem("original");
+    sessionStorage.removeItem("translation");
     window.location.reload();
 };
 
@@ -396,8 +406,8 @@ var textTree = function() {
     if (sessionStorage.treeData !== "undefined") {
         cleanjson();
         if (sessionStorage.original && sessionStorage.translation) {
-            output = sessionStorage.original + "\n" 
-                + sessionStorage.translation + "\n" 
+            output = sessionStorage.original + "\n"
+                + sessionStorage.translation + "\n"
                 + sessionStorage.treeData;
         } else if (sessionStorage.original) {
             output = sessionStorage.original + "\n" + sessionStorage.treeData;
@@ -418,8 +428,8 @@ var downloadTree = function() {
     if (sessionStorage.treeData !== "undefined") {
         cleanjson();
         if (sessionStorage.original && sessionStorage.translation) {
-            output = sessionStorage.original + "\n" 
-                + sessionStorage.translation + "\n" 
+            output = sessionStorage.original + "\n"
+                + sessionStorage.translation + "\n"
                 + sessionStorage.treeData;
         } else if (sessionStorage.original) {
             output = sessionStorage.original + "\n" + sessionStorage.treeData;
@@ -615,7 +625,7 @@ var getTree = function(treeData) {
     root.x0 = viewerWidth / 2;
     root.y0 = parseFloat(localStorage['nodesize'])+40;
     // helper functions to collapse and expand nodes
-    
+
     function collapse(d) {
         if (d.children) {
             d._children = d.children;
@@ -822,7 +832,7 @@ var getTree = function(treeData) {
 
         // Sets the x and y coordinates of the nodes
         nodes.forEach(function(d) {d.y = d.depth * parseFloat(localStorage['customdepth']);
-								   d.x = d.x * parseFloat(localStorage['customwidth']); 
+								   d.x = d.x * parseFloat(localStorage['customwidth']);
 		});
 		// Revise node coordinates to prevent shifting of the root node
 		nodes.forEach(function(d) {d.y = d.y+(root.y0-root.y);
@@ -840,7 +850,7 @@ var getTree = function(treeData) {
 
         // create a group to hold path graphics and path labels
         var linkEnter = link.enter().append("g").attr("class", "pathGroup");
-        
+
         // add path graphics
         linkEnter.append("path")
             .attr("d", function(d) {
@@ -867,7 +877,7 @@ var getTree = function(treeData) {
                 return;
             };
         });
-        
+
         // add labels
         linkEnter.append("text")
                 .attr("class", "linktext " + localStorage.currentFont)
@@ -882,7 +892,7 @@ var getTree = function(treeData) {
         // animation -- placeholder
         var linkUpdate = link.transition()
                 .duration(duration);
-        
+
         // format paths
         linkUpdate.select("path")
                 .attr("d", diagonal)
@@ -900,7 +910,7 @@ var getTree = function(treeData) {
             .style("fill-opacity", 1)
             .style("stroke", "#000")
             .style("stroke-width", "1px");
-    
+
         // animate text entrance
         linkUpdate.select("text")
                 .attr("transform", function(d) {
@@ -927,7 +937,7 @@ var getTree = function(treeData) {
         nodeEnter.append("text")
             .attr("class", localStorage.currentFont)
 			// these (x,y) coordinates seem to be overidden below
-            .attr("y", function(d) { 
+            .attr("y", function(d) {
                 return d.children || d._children ? 0 : parseFloat(localStorage['ysep']); })
             .attr("x", function(d) {
                 return d.children || d._children ? parseFloat(localStorage['xsep'])+parseFloat(localStorage['nodesize']) : -parseFloat(localStorage['nodesize']); })
@@ -973,7 +983,7 @@ var getTree = function(treeData) {
                 outCircle(node);
             });
 
-		
+
 
         // node entrance animation
         var nodeUpdate = node.transition()
@@ -985,12 +995,12 @@ var getTree = function(treeData) {
         // fade in labels
         nodeUpdate.select("text")
             .attr("class", localStorage['currentFont'])
-            .attr("y", function(d) { 
+            .attr("y", function(d) {
                 return d.children || d._children ? 0 : parseFloat(localStorage['ysep'])+parseFloat(localStorage['nodesize']); })
             .attr("x", function(d) {
                 return d.children || d._children ? parseFloat(localStorage['xsep'])+parseFloat(localStorage['nodesize']) : -parseFloat(localStorage['nodesize']); })
             .style("fill-opacity", 1);
-    
+
         // node circles "grow" in (animation)
         nodeUpdate.select("circle.nodeCircle")
             .attr("r", parseFloat(localStorage['nodesize']))
