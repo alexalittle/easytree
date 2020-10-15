@@ -125,22 +125,21 @@ var setJSONtreeData = function() {
     var sents = input.match(/##(o|t): .*/g);
     if (sents) {
         // set both, if applicable
-        if (sents.length === 2) {
+        if (sents.length == 2) {
             sessionStorage.setItem("original", sents[0]);
             showSents(sessionStorage.original);
             sessionStorage.setItem("translation", sents[1]);
             showSents(sessionStorage.translation);
         }
         // else show original, if available
-        else if (sents.length === 1) {
+        else {
             sessionStorage.setItem("original", sents[0]);
             sessionStorage.setItem("translation", "");
             showSents(sessionStorage.original);
         }
-        else {
-            sessionStorage.setItem("original", "");
-            sessionStorage.setItem("translation", "");
-        }
+    } else {
+        sessionStorage.setItem("original", "");
+        sessionStorage.setItem("translation", "");
     };
     // remove sentences from tree data to isolate the JSON
     var treeData = input.replace(/##(o|t): .*/g, "");
