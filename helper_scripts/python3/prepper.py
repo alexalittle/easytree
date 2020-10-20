@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #  prepper.py
@@ -59,8 +59,6 @@ import argparse
 import os
 # json allows json output
 import json
-# codecs accomodates utf-8
-import codecs
 
 # set up the optional argument parser
 parser = argparse.ArgumentParser()
@@ -188,18 +186,18 @@ def prepJSON(n):
 			tempdict['children'].insert(0, output)
 		index += 1
 
-print "Preparing directory"
+print("Preparing directory")
 # make sure the directory doesn't exist yet
 if not os.path.exists(dirname):
 	# create the directory
 	os.makedirs(dirname)
 
-print "Reading input file"
+print("Reading input file")
 # read in the file
 # get list of sentences
 osents = []
-with codecs.open(infile, 'r', 'utf8') as infile:
-	lines = filter(None, (line.rstrip() for line in infile))
+with open(infile, 'r', encoding='utf-8') as infile:
+	lines = list(filter(None, (line.rstrip() for line in infile)))
 	if stopindex == 0:
 		stopindex = len(lines)
 	index = 0
@@ -211,9 +209,9 @@ with codecs.open(infile, 'r', 'utf8') as infile:
 
 tsents = []
 if haveTrans == True:
-	print "Reading translations"
-	with codecs.open(transfile, 'r', 'utf8') as transfile:
-		lines = filter(None, (line.rstrip() for line in transfile))
+	print("Reading translations")
+	with open(transfile, 'r', encoding='utf-8') as transfile:
+		lines = list(filter(None, (line.rstrip() for line in transfile)))
 		if not stopindex:
 			stopindex = len(lines)
 		index = 0
@@ -224,10 +222,10 @@ if haveTrans == True:
 data = {}
 if haveDict == True:
 	if getDef or getPOS:
-		print "Reading dictionary"
+		print("Reading dictionary")
 		getDict(dictfile)
 			
-print "Processing output"
+print("Processing output")
 # create a dictionary to hold the data
 tempdict = {}
 
@@ -242,13 +240,13 @@ while n < len(osents):
 	prepJSON(n)
 	# determine filename
 	filename = "./" + dirname + "/" + "sent" + str(n) + ".json"
-	#print "Writing " + filename
+	print(f"Writing {filename}")
 	# make the actual json file
-	with codecs.open(filename, 'w', 'utf-8') as jsonfile:
+	with open(filename, 'w', encoding='utf-8') as jsonfile:
 		jsonfile.write("##o: " + osent + "\n")
 		if haveTrans == True:
 			jsonfile.write("##t: " + tsent + "\n")
 		json.dump(tempdict, jsonfile, ensure_ascii=False)
 	n += 1
 
-print "Finished!"
+print("Finished!")

@@ -1,1 +1,2 @@
-{"name": "root", "children": [{"name": "Yet", "pos": "pos", "index": 0}, {"name": "another", "pos": "pos", "index": 1}, {"name": "example", "pos": "pos", "index": 2}, {"name": "here", "pos": "pos", "index": 3}]}
+##o: ‫إلى اللقاء قريبًا!‬
+{"name": "root", "children": [{"name": "قريبًا!‬", "index": 2, "def": "قريبًا!‬"}, {"name": "اللقاء", "index": 1, "def": "اللقاء"}, {"name": "‫إلى", "index": 0, "def": "‫إلى"}]}
