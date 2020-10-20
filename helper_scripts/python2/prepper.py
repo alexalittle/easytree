@@ -231,7 +231,7 @@ print "Processing output"
 # create a dictionary to hold the data
 tempdict = {}
 
-n = 1
+n = 0
 # for each sentence
 while n < len(osents):
 	# get copies of the original and translation sentences
@@ -241,7 +241,7 @@ while n < len(osents):
 	# prepare the JSON structure
 	prepJSON(n)
 	# determine filename
-	filename = "./" + dirname + "/" + "sent" + str(n) + ".json"
+	filename = "./" + dirname + "/" + "sent" + str(n+1) + ".json"
 	#print "Writing " + filename
 	# make the actual json file
 	with codecs.open(filename, 'w', 'utf-8') as jsonfile:
