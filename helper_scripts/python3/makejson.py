@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #  makejson.py
@@ -51,18 +51,18 @@ try:
 	if reverse == "reverse":
 		reverse = True
 	else:
-		print reverse + " is not a valid command."
+		print(f"{reverse} is not a valid command.")
 		quit()
 except IndexError:
 	reverse = False
 
-print "Creating output directory"
+print("Creating output directory")
 # make sure the directory doesn't exist yet
 if not os.path.exists(dirname):
 	# create the directory
 	os.makedirs(dirname)
 
-print "Reading input file"
+print("Reading input file")
 # read in the file
 # get list of sentences
 sents = []
@@ -104,10 +104,10 @@ for sent in sents:
 		index += 1
 	# determine filename
 	filename = "./" + dirname + "/" + "sent" + str(n) + ".json"
-	print "Writing " + filename
+	print(f"Writing {filename}")
 	# make the actual json file
 	with codecs.open(filename, 'w', 'utf-8') as jsonfile:
 		json.dump(tempdict, jsonfile, ensure_ascii=False)
 	n += 1
 
-print "Finished!"
+print("Finished!")
