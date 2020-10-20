@@ -1,0 +1,2 @@
+##o: Kevin is playing a video game.
+{"name": "root", "children": [{"index": 0, "name": "Kevin", "def": "Kevin"}, {"index": 1, "name": "is", "def": "is"}, {"index": 2, "name": "playing", "def": "playing"}, {"index": 3, "name": "a", "def": "a"}, {"index": 4, "name": "video", "def": "video"}, {"index": 5, "name": "game.", "def": "game."}]}

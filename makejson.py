@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 #
 #  makejson.py
@@ -28,7 +28,7 @@
 #	  right-to-left
 #
 #	Run as:
-#	python makejson.py sentencesfile dirname [reverse]
+#	makejson.py sentencesfile dirname [reverse]
 #
 
 # sys allows command line arguments

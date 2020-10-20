@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 #
 #  prepper.py
@@ -48,7 +48,7 @@
 #	  to avoid creating excessively large directories.
 #
 #	Run as:
-#	python prepper.py sentencesfile dirname 
+#	prepper.py sentencesfile dirname 
 #		[--reverse] [--t transfile] [--dict dictfile] [--def] [--pos]
 #
 
