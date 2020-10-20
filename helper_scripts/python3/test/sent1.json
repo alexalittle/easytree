@@ -1,2 +1,2 @@
-##o: أين أنتي؟
-{"name": "root", "children": [{"name": "أنتي؟", "index": 1, "def": "أنتي؟"}, {"name": "أين", "index": 0, "def": "أين"}]}
+##o: كيف حالك؟
+{"name": "root", "children": [{"name": "حالك؟", "index": 1, "def": "حالك؟"}, {"name": "كيف", "index": 0, "def": "كيف"}]}

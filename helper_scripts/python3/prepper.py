@@ -229,17 +229,18 @@ print("Processing output")
 # create a dictionary to hold the data
 tempdict = {}
 
-n = 1
+n = 0
 # for each sentence
 while n < len(osents):
 	# get copies of the original and translation sentences
 	osent = " ".join(osents[n])
+	print(f"{osent}")
 	if haveTrans == True:
 		tsent = tsents[n]
 	# prepare the JSON structure
 	prepJSON(n)
 	# determine filename
-	filename = "./" + dirname + "/" + "sent" + str(n) + ".json"
+	filename = "./" + dirname + "/" + "sent" + str(n+1) + ".json"
 	print(f"Writing {filename}")
 	# make the actual json file
 	with open(filename, 'w', encoding='utf-8') as jsonfile:
