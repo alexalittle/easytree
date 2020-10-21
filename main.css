@@ -22,7 +22,8 @@ header {
     font-family: HennyPenny;
     text-align: center;
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
+    padding: 5px;
 }
 
 /* all other logo instances */
@@ -50,9 +51,9 @@ body.gen {
 .mainbox {
     background-color: #545454;
     background-image: url('bkgds/black-paper.png');
-    width: 500px;
-    height: 500px;
-    padding: 25px;
+    width: 40%;
+    height: 50%;
+    padding: 15px;
     -webkit-box-shadow: 10px 10px 43px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 43px -4px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 43px -4px rgba(0,0,0,0.75);
@@ -80,8 +81,8 @@ body.gen {
 
 /* start page - spacing between navigation links */
 .mainbox nav div {
-    width: 500px;
-    height: 50px;
+    width: 50%;
+    height: 3vh;
 }
 
 /* content box heading */
@@ -114,7 +115,7 @@ li {
 li #faq {
     font-family: Copse;
     text-align: left;
-    color: #000;
+    color: #fff;
     margin-left: 20px;
     font-size: 16px;
 }
