@@ -4,7 +4,7 @@
 +-----------------------------------------------+
 
 Author: Alexa Little
-Last update: November 16, 2015
+Last update: October 20, 2020
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -100,14 +100,19 @@ CONTENTS
 	- Copse-Regular.ttf
 	- BEBAS___.ttf
 
+ * helper_scripts Folder
+ 	- python2 Folder
+		- makejson.py
+		- prepper.py
+	- python3 Folder
+		- makejson.py
+		- prepper.py
+	[Documentation available at the beginning of code.]
+
  * bkgds Folder
 	- footer_lodyas.png
 	- black-paper.png
 	- readme.txt
-
- * python Folder
-	- prepper.py
-	  [Documentation available at beginning of code]
 
  * licenses Folder
 	- Blob License
@@ -127,15 +132,16 @@ Recommended browsers:
  * Firefox
  * Chrome
 
-Easy Tree has been tested on Linux and Windows machines.
+2015: Easy Tree has been tested on Linux and Windows machines.
+2020: Easy Tree has been updated and tested on a Windows machine.
 
-The python program requires Python 2.7. 
+The python program requires Python 2.7 or Python 3.9. 
 The HTML is HTML5.
 
 The interactive tree functions are built using jQuery and the d3.js package.
 These are included in the project files, so no import/download/installation should be needed.
 
-For editing the code, I recommend the NetBeans IDE, but any IDE with HTML5, CSS, and Javascript capabilities should work.
+For editing the code, I recommend Sublime Text Editor, but any text editor or IDE with HTML5, CSS, JavaScript, and Python capabilities should work.
 
 INSTALLATION / CONFIGURATION
 ----------------------------
@@ -146,9 +152,7 @@ INSTALLATION / CONFIGURATION
 
  (2) Extract the files and save the "EasyTree" folder to your desired location.
 
- (3) Enter the "EasyTree" folder. Enter the "public_html" folder.
-
- (4) Click on "index.html" and run in your desired browser.
+ (3) Click on "index.html" and run in your desired browser.
 
 GENERAL USE (INSTRUCTIONS)
 --------------------------
@@ -265,18 +269,15 @@ TROUBLESHOOTING
   * Can't label paths to the 'root' node
         Within the program, the 'root' node acts as a placeholder and has special properties. Labeling paths to 'root' is blocked because those labels interfere with the program's function. Besides, 'root' is a meaningless node so you really shouldn't have labels for its child paths!
 
-                    <h5>Why can't I change the colors in the part-of-speech key?</h5>
-                    <p id='faq'>This functionality is in the works for future editions of Easy Tree. For now, the palette is designed to be distinctive and colorblind-safe.</p>
-                </li>
-                <li>
-                    <h5>Why doesn't "CLEAR" reset the part-of-speech labels?</h5>
-                    <p id='faq'>"CLEAR" just removes the tree data. To reset all settings, use the "RESET" button. To reset only POS settings or tree display settings, open the relevant menu and click "Reset All".</p>
-                </li>
-  * 
-                    <h5>How do I close toolbar windows once I'm finished?</h5>
-                    <p id="faq">If a window does not automatically close, click the toolbar button once more to close. Most windows also include a "close" button.</p>
-                </li>
-                <li>
+  * Why can't I change the colors in the part-of-speech key?
+        The palette is designed to be distinctive and colorblind-safe. However, if you wish you change it, you can do so by changing the color hex codes in the main.js code.
+
+  * Why doesn't "CLEAR" reset the part-of-speech labels?</h5>
+        "CLEAR" just removes the tree data. To reset all settings, use the "RESET" button. To reset only POS settings or tree display settings, open the relevant menu and click "Reset All".</p>
+ 
+  * How do I close toolbar windows once I'm finished?</h5>
+         If a window does not automatically close, click the toolbar button once more to close. Most windows also include a "close" button.
+
   * The standard font doesn't display my language well
         You can change the font under "SETTINGS". Currently, choices are limited to basic web-safe fonts and the standard font, "Copse".
 
@@ -290,11 +291,11 @@ FAQ
 
  * Can I make changes to the Easy Tree program?
 	
-	Absolutely! Feel free to change the HTML, CSS, and Javascript files as much as you want.
+	Absolutely! Feel free to change the HTML, CSS, JavaScript, and Python files as much as you want.
 
  * What is the license for this program?
 
-	Easy Tree is provided with a BSD-3 license (as required by some of its Javascript source packages). You can find this license in the "licenses" folder of Easy Tree.
+	Easy Tree is provided with a BSD-3 license (as required by some of its JavaScript source packages). You can find this license in the "licenses" folder of Easy Tree.
 
  * Who created the design elements for this project?
 
@@ -320,23 +321,24 @@ FAQ
 
 	If you find a bug in the program, please submit an issue report via the GitHub repository: [https://github.com/alexalittle/easytree].
 
-	If you are having trouble running this program, you can contact the author at alexa (dot) little (at) yale.edu.
+	If you are having trouble running this program, you can contact the author at alexanicolelittle (at) gmail (dot) com.
 
 ABOUT THE AUTHOR
 ----------------
 
-Alexa Little is a fourth-year linguistics undergraduate at Yale University. Her interests include computational linguistics, second language acquisition, and low-resource Asian languages.
+Alexa Little is a computational linguist, programmer, and language activist. 
+Her interests include linguistics, second language acquisition, and NLP, particularly for low-resource and Indigenous languages.
 
 Language proficiencies: English [native], Japanese [working], Hindi [limited working]
-Programming: Python, HTML5/CSS, Javascript
+Programming: Python 2/3, HTML5/CSS, JavaScript
 
-alexa (dot) little (at) yale.edu
+alexanicolelittle (at) gmail (dot) com
 
 DISCLAIMERS
 -----------
 
 License: CC BY-SA 4.0 ; MIT/BSD-3
-Copyright (c) 2015, Alexa Little
+Copyright (c) 2020, Alexa Little
 All rights reserved.
 
 THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
